@@ -39,42 +39,28 @@ module tiller {
 ## Module Variables
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Inputs
 
-| Name                            | Description                                                   |     Type     |                  Default                  | Required |
-| ------------------------------- | ------------------------------------------------------------- | :----------: | :---------------------------------------: | :------: |
-| automount_service_account_token | Enable automatin mounting of the service account token        |     bool     |                 `"true"`                  |    no    |
-| component                       | Component name                                                |    string    |                 `"helm"`                  |    no    |
-| name                            | Generic name                                                  |    string    |                `"tiller"`                 |    no    |
-| namespace                       | Namespace to where deploy tiller                              |    string    |                    n/a                    |   yes    |
-| service_namespaces              | The ServiceAccounts to grant permissions to. Example ['helm'] | list(string) |                    n/a                    |   yes    |
-| tiller_image                    | Tiller Docker image                                           |    string    | `"gcr.io/kubernetes-helm/tiller:v2.14.2"` |    no    |
-| tiller_max_history              | Tiller history to contain                                     |    string    |                  `"200"`                  |    no    |
-| tiller_replicas                 | Amound of replicas to deploy                                  |    string    |                   `"1"`                   |    no    |
-| tiller_service_type             | Type of Tiller's Kubernetes service object.                   |    string    |               `"ClusterIP"`               |    no    |
-| tiller_version                  | Tiller version                                                |    string    |                `"v2.14.2"`                |    no    |
-
-## Outputs
-
-| Name            | Description       |
-| --------------- | ----------------- |
-| service_account | a service account |
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| app | an application to deploy | object | n/a | yes |
+| namespace | namespace where to deploy an application | string | n/a | yes |
+| repository | Helm repository | string | n/a | yes |
+| set\_strings | Value block with custom STRING values to be merged with the values yaml. | object | n/a | yes |
+| values | Extra values | list(string) | n/a | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Commands
 
 <!-- START makefile-doc -->
-
 ```
-$ make help
+$ make help 
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
 changelog                      Update changelog
-release                        Create release version
+release                        Create release version 
 ```
-
 <!-- END makefile-doc -->
 
 ## How to Contribute
