@@ -1,0 +1,61 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 140
+
+[*.sh]
+indent_style = space
+indent_size = 2
+
+[Makefile]
+indent_style = tab
+
+[*.{tf,tfvars}]
+indent_size = 2
+indent_style = space
+
+[*.{yml, yaml}]
+indent_style = space
+indent_size = 2
+
+[*.feature]
+indent_size = 2
+
+[*.{json,tpl}]
+indent_style = space
+indent_size = 2
+
+[Jenkinsfile]
+indent_size = 2
+indent_style = space
+
+[*.{xml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct}]
+indent_size = 2
+
+[{*.scala,*.sbt}]
+indent_size = 2
+max_line_length = 80
+
+[{*.hcl,*.conf}]
+indent_size = 2
+max_line_length = 100
+
+# JS
+[*.js, **/*.js]
+indent_size = 4
+indent_style = space
+
+[{package.json}]
+indent_size = 2
+indent_style = space
