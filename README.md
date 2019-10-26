@@ -46,6 +46,7 @@ module tiller {
 | app | an application to deploy | object | n/a | yes |
 | namespace | namespace where to deploy an application | string | n/a | yes |
 | repository | Helm repository | string | n/a | yes |
+| set\_sensitive | Value block with custom sensitive values to be merged with the values yaml that won't be exposed in the plan's diff. | object | `"null"` | no |
 | set\_strings | Value block with custom STRING values to be merged with the values yaml. | object | n/a | yes |
 | values | Extra values | list(string) | n/a | yes |
 
