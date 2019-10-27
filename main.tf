@@ -12,7 +12,7 @@ resource helm_release this {
 
   dynamic "set_string" {
     iterator = item
-    for_each = var.set_strings
+    for_each = var.set_strings == null ? [] : var.set_strings
 
     content {
       name  = item.value.name
@@ -21,11 +21,12 @@ resource helm_release this {
   }
 
   dynamic "set_sensitive" {
-    for_each = var.set_sensitive == null ? [] : [var.set_sensitive]
+    iterator = item
+    for_each = var.set_sensitive == null ? [] : var.set_sensitive
 
     content {
-      name  = set_sensitive.value.path
-      value = set_sensitive.value.value
+      name  = item.value.path
+      value = item.value.value
     }
   }
 }
