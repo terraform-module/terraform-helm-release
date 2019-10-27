@@ -33,6 +33,13 @@ module tiller {
       value = "jenkins"
     },
   ]
+
+  set_sensitive = [
+    {
+      path  = "master.adminUser"
+      value = "jenkins"
+    },
+  ]
 }
 ```
 
@@ -56,11 +63,11 @@ module tiller {
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
 changelog                      Update changelog
-release                        Create release version 
+release                        Create release version
 ```
 <!-- END makefile-doc -->
 

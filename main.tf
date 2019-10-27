@@ -24,7 +24,7 @@ resource helm_release this {
     for_each = var.set_sensitive == null ? [] : [var.set_sensitive]
 
     content {
-      name  = set_sensitive.value.name
+      name  = set_sensitive.value.path
       value = set_sensitive.value.value
     }
   }
