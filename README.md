@@ -5,7 +5,7 @@
 Here's the gist of using it via github.
 
 ```terraform
-module tiller {
+module jenkins {
   source     = "github.com/terraform-module/terraform-helm-release?ref=v2.0.0"
   namespace  = "app-namespace"
   repository = "https://kubernetes-charts.storage.googleapis.com"
