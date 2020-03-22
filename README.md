@@ -1,5 +1,19 @@
 # Helm Release Module
 
+[![](https://img.shields.io/github/license/terraform-module/terraform-helm-release)](https://github.com/terraform-module/terraform-helm-release)
+![](https://img.shields.io/github/v/tag/terraform-module/terraform-helm-release)
+[![](https://img.shields.io/github/workflow/status/terraform-module/terraform-helm-release/validate/master)](https://github.com/terraform-module/terraform-helm-release/actions?query=is%3Acompleted)
+![](https://github.com/terraform-module/terraform-helm-release/workflows/Validator/badge.svg)
+![](https://img.shields.io/issues/github/terraform-module/terraform-helm-release)
+![](https://img.shields.io/github/issues/terraform-module/terraform-helm-release)
+![](https://img.shields.io/github/issues-closed/terraform-module/terraform-helm-release)
+[![](https://img.shields.io/github/languages/code-size/terraform-module/terraform-helm-release)](https://github.com/terraform-module/terraform-helm-release)
+[![](https://img.shields.io/github/repo-size/terraform-module/terraform-helm-release)](https://github.com/terraform-module/terraform-helm-release)
+![](https://img.shields.io/github/languages/top/terraform-module/terraform-helm-release?color=green&logo=terraform&logoColor=blue)
+![](https://img.shields.io/github/commit-activity/m/terraform-module/terraform-helm-release)
+![](https://img.shields.io/github/contributors/terraform-module/terraform-helm-release)
+![](https://img.shields.io/github/last-commit/terraform-module/terraform-helm-release)
+
 ## Usage example
 
 Here's the gist of using it via github.
@@ -63,11 +77,11 @@ module jenkins {
 
 <!-- START makefile-doc -->
 ```
-$ make help
+$ make help 
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
 changelog                      Update changelog
-release                        Create release version
+release                        Create release version 
 ```
 <!-- END makefile-doc -->
 
