@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/github/license/terraform-module/terraform-helm-release)](https://github.com/terraform-module/terraform-helm-release)
 ![](https://img.shields.io/github/v/tag/terraform-module/terraform-helm-release)
-[![](https://img.shields.io/github/workflow/status/terraform-module/terraform-helm-release/validate /master)](https://github.com/terraform-module/terraform-helm-release/actions?query=is%3Acompleted)
+[![](https://img.shields.io/github/workflow/status/terraform-module/terraform-helm-release/validate/master)](https://github.com/terraform-module/terraform-helm-release/actions?query=is%3Acompleted)
 ![](https://github.com/terraform-module/terraform-helm-release/workflows/Validator/badge.svg)
 ![](https://img.shields.io/issues/github/terraform-module/terraform-helm-release)
 ![](https://img.shields.io/github/issues/terraform-module/terraform-helm-release)
@@ -73,12 +73,13 @@ module jenkins {
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12 |
+| helm | >= 1.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| helm | n/a |
+| helm | >= 1.1 |
 
 ## Inputs
 
