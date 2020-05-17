@@ -1,7 +1,15 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+<a name="v2.6.0"></a>
+## [v2.6.0] - 2020-05-17
 
+ENHANCEMENTS:
+- Use `set` argument. `set_string`: [DEPRECATED]
+- `app` values are optional. Waiting for `https://github.com/hashicorp/terraform/issues/19898`
+
+BREAKING CHANGES:
+- Removed type check for `app` variable
 
 <a name="v2.5.0"></a>
 ## [v2.5.0] - 2020-03-22

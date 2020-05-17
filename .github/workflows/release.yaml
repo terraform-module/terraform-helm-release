@@ -1,0 +1,48 @@
+name: Bump version
+on:
+  push:
+    branches:
+      - master
+
+env:
+  WITH_V: true
+  DEFAULT_BUMP: patch
+  INITIAL_VERSION: 0.0.0
+  TERRAFORM_VERSION: 0.12
+
+jobs:
+  build:
+    name: release new version
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip')"
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: '10'
+
+    - name: register values
+      id: register
+      run: |
+        echo "::set-output name=release_timestamp::$(date +%Y-%m-%d_%H.%m)"
+        echo "::set-output name=tag_hash::${GITHUB_SHA::8}"
+        echo "::set-output name=changelog::$(git log -1 --pretty=format:"%s")"
+
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.17.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: create release
+      id: create_release
+      uses: actions/create-release@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.tag.outputs.tag }}
+        release_name: release ${{ steps.register.outputs.release_timestamp}}
+        draft: false
+        prerelease: false
+        body: |
+          Changes in this Release ${{ steps.register.outputs.changelog }}
+          - ${{ steps.register.outputs.changelog }}
+          - Terraform Version: ${{ env.TERRAFORM_VERSION }}

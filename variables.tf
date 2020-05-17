@@ -4,15 +4,7 @@ variable "namespace" {
 
 variable "app" {
   description = "an application to deploy"
-  type = object({
-    name          = string
-    version       = string
-    chart         = string
-    force_update  = bool
-    wait          = bool
-    recreate_pods = bool
-    deploy        = number
-  })
+  type        = map
 }
 
 variable "values" {
@@ -20,7 +12,7 @@ variable "values" {
   type        = list(string)
 }
 
-variable "set_strings" {
+variable "set" {
   description = "Value block with custom STRING values to be merged with the values yaml."
   type = list(object({
     name  = string

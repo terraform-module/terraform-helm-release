@@ -5,14 +5,15 @@ resource helm_release this {
   name          = var.app["name"]
   version       = var.app["version"]
   chart         = var.app["chart"]
-  force_update  = var.app["force_update"]
-  wait          = var.app["wait"]
-  recreate_pods = var.app["recreate_pods"]
+  force_update  = lookup(var.app, "force_update", true)
+  wait          = lookup(var.app, "wait", true)
+  recreate_pods = lookup(var.app, "recreate_pods", true)
+  max_history   = lookup(var.app, "max_history", 0)
   values        = var.values
 
-  dynamic "set_string" {
+  dynamic "set" {
     iterator = item
-    for_each = var.set_strings == null ? [] : var.set_strings
+    for_each = var.set == null ? [] : var.set
 
     content {
       name  = item.value.name
