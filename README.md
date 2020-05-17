@@ -117,6 +117,7 @@ kubectl get serviceaccount <name> -o yaml
 kubectl get clusterrolebinding <name> -o yaml
 kubectl get deploy <name> -o yaml
 ```
+
 ### :memo: Guidelines
 
  - :memo: Use a succinct title and description.
