@@ -18,6 +18,7 @@ variable "set" {
     name  = string
     value = string
   }))
+  default = null
 }
 
 variable "set_sensitive" {

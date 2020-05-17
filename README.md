@@ -88,7 +88,7 @@ module jenkins {
 | app | an application to deploy | `map` | n/a | yes |
 | namespace | namespace where to deploy an application | `any` | n/a | yes |
 | repository | Helm repository | `string` | n/a | yes |
-| set | Value block with custom STRING values to be merged with the values yaml. | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | n/a | yes |
+| set | Value block with custom STRING values to be merged with the values yaml. | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `null` | no |
 | set\_sensitive | Value block with custom sensitive values to be merged with the values yaml that won't be exposed in the plan's diff. | <pre>list(object({<br>    path  = string<br>    value = string<br>  }))</pre> | `null` | no |
 | values | Extra values | `list(string)` | n/a | yes |
 
