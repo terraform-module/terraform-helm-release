@@ -109,7 +109,7 @@ module jenkins {
 | repository | Helm repository | `string` | n/a | yes |
 | set | Value block with custom STRING values to be merged with the values yaml. | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `null` | no |
 | set\_sensitive | Value block with custom sensitive values to be merged with the values yaml that won't be exposed in the plan's diff. | <pre>list(object({<br>    path  = string<br>    value = string<br>  }))</pre> | `null` | no |
-| values | Extra values | `list(string)` | n/a | yes |
+| values | Extra values | `list(string)` | `[]` | no |
 
 ## Outputs
 

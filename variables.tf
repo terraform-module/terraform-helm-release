@@ -11,6 +11,7 @@ variable "app" {
 variable "values" {
   description = "Extra values"
   type        = list(string)
+  default     = []
 }
 
 variable "set" {

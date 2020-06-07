@@ -28,7 +28,7 @@ jobs:
         echo "::set-output name=changelog::$(git log -1 --pretty=format:"%s")"
 
     - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.17.2
+      uses: anothrNick/github-tag-action@1.22.0
       id: tag
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
