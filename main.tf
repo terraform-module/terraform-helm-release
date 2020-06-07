@@ -9,6 +9,7 @@ resource helm_release this {
   wait          = lookup(var.app, "wait", true)
   recreate_pods = lookup(var.app, "recreate_pods", true)
   max_history   = lookup(var.app, "max_history", 0)
+  lint          = lookup(var.app, "lint", true)
   values        = var.values
 
   dynamic "set" {

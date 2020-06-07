@@ -1,5 +1,6 @@
 variable "namespace" {
   description = "namespace where to deploy an application"
+  type        = string
 }
 
 variable "app" {

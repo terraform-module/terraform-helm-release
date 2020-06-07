@@ -15,6 +15,3 @@ validate: ## Validate with pre-commit hooks
 
 changelog: ## Update changelog
 	git-chglog -o CHANGELOG.md --next-tag `semtag final -s minor -o`
-
-release: ## Create release version
-	semtag final -s minor

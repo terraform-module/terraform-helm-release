@@ -7,7 +7,7 @@ on:
 env:
   WITH_V: true
   DEFAULT_BUMP: patch
-  INITIAL_VERSION: 0.0.0
+  INITIAL_VERSION: 0.12.0
   TERRAFORM_VERSION: 0.12
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
       with:
-        fetch-depth: '10'
+        fetch-depth: '1'
 
     - name: register values
       id: register
@@ -44,6 +44,6 @@ jobs:
         draft: false
         prerelease: false
         body: |
-          Changes in this Release ${{ steps.register.outputs.changelog }}
+          Changes in this Release ${{ steps.register.outputs.release_timestamp }}
           - ${{ steps.register.outputs.changelog }}
           - Terraform Version: ${{ env.TERRAFORM_VERSION }}

@@ -2,8 +2,8 @@
 
 [![](https://img.shields.io/github/license/terraform-module/terraform-helm-release)](https://github.com/terraform-module/terraform-helm-release)
 ![](https://img.shields.io/github/v/tag/terraform-module/terraform-helm-release)
-[![](https://img.shields.io/github/workflow/status/terraform-module/terraform-helm-release/validate/master)](https://github.com/terraform-module/terraform-helm-release/actions?query=is%3Acompleted)
-![](https://github.com/terraform-module/terraform-helm-release/workflows/Validator/badge.svg)
+[![](https://img.shields.io/github/workflow/status/terraform-module/terraform-helm-release/commit-check/master)](https://github.com/terraform-module/terraform-helm-release/actions?query=is%3Acommit-check)
+![](https://github.com/terraform-module/terraform-helm-release/workflows/commit-check/badge.svg)
 ![](https://img.shields.io/issues/github/terraform-module/terraform-helm-release)
 ![](https://img.shields.io/github/issues/terraform-module/terraform-helm-release)
 ![](https://img.shields.io/github/issues-closed/terraform-module/terraform-helm-release)
@@ -13,6 +13,25 @@
 ![](https://img.shields.io/github/commit-activity/m/terraform-module/terraform-helm-release)
 ![](https://img.shields.io/github/contributors/terraform-module/terraform-helm-release)
 ![](https://img.shields.io/github/last-commit/terraform-module/terraform-helm-release)
+
+## Table Of Contents
+
+- [Helm Release Module](#helm-release-module)
+  * [Usage example](#usage-example)
+  * [Module Variables](#module-variables)
+  * [Requirements](#requirements)
+  * [Providers](#providers)
+  * [Inputs](#inputs)
+  * [Outputs](#outputs)
+  * [Commands](#commands)
+  * [Validate creation of components](#validate-creation-of-components)
+    + [:memo: Guidelines](#-memo--guidelines)
+  * [License](#license)
+  * [How to Contribute](#how-to-contribute)
+- [Authors](#authors)
+  * [Terraform Registry](#terraform-registry)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## Usage example
 
@@ -86,7 +105,7 @@ module jenkins {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | app | an application to deploy | `map` | n/a | yes |
-| namespace | namespace where to deploy an application | `any` | n/a | yes |
+| namespace | namespace where to deploy an application | `string` | n/a | yes |
 | repository | Helm repository | `string` | n/a | yes |
 | set | Value block with custom STRING values to be merged with the values yaml. | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `null` | no |
 | set\_sensitive | Value block with custom sensitive values to be merged with the values yaml that won't be exposed in the plan's diff. | <pre>list(object({<br>    path  = string<br>    value = string<br>  }))</pre> | `null` | no |
@@ -102,11 +121,10 @@ No output.
 
 <!-- START makefile-doc -->
 ```
-$ make help
+$ make help 
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
-changelog                      Update changelog
-release                        Create release version
+changelog                      Update changelog 
 ```
 <!-- END makefile-doc -->
 
