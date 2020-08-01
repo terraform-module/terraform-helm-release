@@ -1,5 +1,5 @@
 resource helm_release this {
-  count         = var.app["deploy"] == true ? 1 : 0
+  count         = var.app["deploy"] ? 1 : 0
   namespace     = var.namespace
   repository    = var.repository
   name          = var.app["name"]
