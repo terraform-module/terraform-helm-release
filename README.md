@@ -38,17 +38,12 @@
 Here's the gist of using it via github.
 
 ```terraform
-data helm_repository stable {
-  name = "stable"
-  url  = "https://kubernetes-charts.storage.googleapis.com"
-}
-
 module jenkins {
   source  = "terraform-module/release/helm"
   version = "2.6.0"
 
   namespace  = "app-namespace"
-  repository =  data.helm_repository.stable.metadata[0].name
+  repository =  "https://charts.helm.sh/stable"
 
   app = {
     name          = "jenkins"
