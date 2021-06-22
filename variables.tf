@@ -5,7 +5,7 @@ variable "namespace" {
 
 variable "app" {
   description = "an application to deploy"
-  type        = map
+  type        = map(any)
 }
 
 variable "values" {
