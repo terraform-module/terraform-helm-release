@@ -1,0 +1,9 @@
+sections:
+  hide: [
+    resources,
+    data-sources,
+    modules
+  ]
+
+settings:
+  anchor: false

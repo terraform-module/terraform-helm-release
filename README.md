@@ -86,20 +86,20 @@ module jenkins {
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
-| helm | >= 1.1 |
+| terraform | >= 0.13 |
+| helm | >= 2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| helm | >= 1.1 |
+| helm | >= 2.0 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| app | an application to deploy | `map` | n/a | yes |
+| app | an application to deploy | `map(any)` | n/a | yes |
 | namespace | namespace where to deploy an application | `string` | n/a | yes |
 | repository | Helm repository | `string` | n/a | yes |
 | set | Value block with custom STRING values to be merged with the values yaml. | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `null` | no |
@@ -108,8 +108,9 @@ module jenkins {
 
 ## Outputs
 
-No output.
-
+| Name | Description |
+|------|-------------|
+| deployment | The state of the helm deployment |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Commands

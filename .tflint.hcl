@@ -1,7 +1,8 @@
-config {
-  deep_check = false
+plugin "aws" {
+  enabled       = true
+  deep_check    = false
   ignore_module = {}
-  varfile = []
+  varfile       = []
 }
 
 rule "terraform_documented_variables" {
