@@ -1,0 +1,49 @@
+name: release.draft
+
+on:
+  workflow_dispatch:
+    inputs:
+      prerelease:
+        description: Is this a pre-release
+        required: true
+        default: true
+      publish:
+        description: Publish release
+        required: false
+        default: false
+      bump:
+        description: 'Bumping (#major, #minor or #patch)'
+        required: false
+        default: patch
+
+jobs:
+  draft-a-release:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: check next version
+        uses: anothrNick/github-tag-action@1.35.0
+        id: tag
+        env:
+          DRY_RUN: true
+          WITH_V: true
+          DEFAULT_BUMP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || 'patch' }}
+
+      - name: release-draft
+        uses: release-drafter/release-drafter@v5.15.0
+        if: "!contains(github.event.head_commit.message, 'skip')"
+        id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          publish: ${{ github.event.inputs.publish }}
+          prerelease: ${{ github.event.inputs.prerelease }}
+          tag: ${{ steps.tag.outputs.new_tag }}
+
+      - name: check-version
+        run: |
+          echo "release it: ${{ github.event.inputs.prerelease }}"
+          echo "out: ${{ steps.release.name }}"
+          echo "tag: ${{ steps.release.outputs.tag_name }}"
