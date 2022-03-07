@@ -1,3 +1,31 @@
+resource "null_resource" "repo_add" {
+  count = var.manage_repo ? 1 : 0
+
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
+  provisioner "local-exec" {
+    command = "helm repo add ${var.app["chart"]} ${var.repository}"
+  }
+}
+
+resource "null_resource" "repo_update" {
+  count = var.manage_repo ? 1 : 0
+
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
+  provisioner "local-exec" {
+    command = "helm repo update ${var.app["chart"]}"
+  }
+
+  depends_on = [
+    resource.null_resource.repo_add[0]
+  ]
+}
+
 resource "helm_release" "this" {
   count                      = var.app["deploy"] ? 1 : 0
   namespace                  = var.namespace
@@ -44,4 +72,25 @@ resource "helm_release" "this" {
       value = item.value.value
     }
   }
+
+  depends_on = [
+    resource.null_resource.repo_update
+  ]
+}
+
+resource "null_resource" "repo_delete" {
+  count = var.manage_repo ? 1 : 0
+
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
+  provisioner "local-exec" {
+    command = "helm repo remove ${var.app["chart"]}"
+  }
+
+  depends_on = [
+    resource.null_resource.repo_add[0],
+    resource.helm_release.this
+  ]
 }

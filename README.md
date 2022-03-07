@@ -88,18 +88,21 @@ module jenkins {
 |------|---------|
 | terraform | >= 0.13 |
 | helm | >= 2.0 |
+| null | >= 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | helm | >= 2.0 |
+| null | >= 3.0 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | app | an application to deploy | `map(any)` | n/a | yes |
+| manage\_repo | Whether Helm repo should be added, updated and removed during Terraform execution | `bool` | `false` | no |
 | namespace | namespace where to deploy an application | `string` | n/a | yes |
 | repository | Helm repository | `string` | n/a | yes |
 | set | Value block with custom STRING values to be merged with the values yaml. | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `null` | no |
