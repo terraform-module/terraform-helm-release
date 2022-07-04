@@ -8,6 +8,11 @@ variable "app" {
   type        = map(any)
 }
 
+variable "repository_config" {
+  description = "repository configuration"
+  type        = map(any)
+}
+
 variable "values" {
   description = "Extra values"
   type        = list(string)
