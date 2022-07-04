@@ -11,6 +11,7 @@ variable "app" {
 variable "repository_config" {
   description = "repository configuration"
   type        = map(any)
+  default     = {}
 }
 
 variable "values" {
