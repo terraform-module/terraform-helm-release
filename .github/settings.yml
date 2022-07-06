@@ -1,0 +1,26 @@
+# These settings are synced to GitHub by https://probot.github.io/apps/settings/
+_extends: .github
+
+repository:
+  # See https://developer.github.com/v3/repos/#edit for all available settings.
+  name: terraform-helm-release
+  description: "ℹ️ App release with terraform and helm."
+  homepage: https://ivankatliarchuk.github.io
+  topics: ivank, terraform, terraform-module, helm, kubernetes
+  private: false
+  has_issues: true
+  has_projects: false
+  has_wiki: false
+  has_downloads: false
+  has_pages: true
+  is_template: true
+  default_branch: master
+  allow_squash_merge: true
+  allow_merge_commit: true
+  allow_rebase_merge: true
+  delete_branch_on_merge: true
+  enable_automated_security_fixes: true
+  enable_vulnerability_alerts: false
+
+branches:
+  - name: master

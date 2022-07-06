@@ -1,30 +1,41 @@
+---
 name: release.draft
 
 on:
+  push:
+    branches:
+      - master
   workflow_dispatch:
     inputs:
       prerelease:
         description: Is this a pre-release
         required: true
         default: true
+        type: boolean
       publish:
         description: Publish release
         required: false
         default: false
+        type: boolean
       bump:
         description: 'Bumping (#major, #minor or #patch)'
         required: false
         default: patch
+        type: choice
+        options:
+        - 'patch'
+        - 'minor'
+        - 'major'
 
 jobs:
   draft-a-release:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: check next version
-        uses: anothrNick/github-tag-action@1.35.0
+        uses: anothrNick/github-tag-action@1.39.0
         id: tag
         env:
           DRY_RUN: true
@@ -32,7 +43,7 @@ jobs:
           DEFAULT_BUMP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || 'patch' }}
 
       - name: release-draft
-        uses: release-drafter/release-drafter@v5.15.0
+        uses: release-drafter/release-drafter@v5.20.0
         if: "!contains(github.event.head_commit.message, 'skip')"
         id: release
         env:
