@@ -1,0 +1,52 @@
+---
+name: linter
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  terraform-validate:
+    name: code format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      # https://github.com/hashicorp/setup-terraform
+      - uses: hashicorp/setup-terraform@v2
+
+      - name: Cache terraform folder
+        uses: actions/cache@v2
+        with:
+          path: ./.terraform
+          key: terraform
+
+      - name: terraform fmt
+        run: terraform fmt -check -recursive -diff
+        continue-on-error: true
+
+      - name: terraform init
+        run: terraform init
+
+      - name: terraform validate
+        run: terraform validate
+
+  tflint:
+    name: "tflint"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        name: Cache tflint plugin dir
+        with:
+          path: ~/.tflint.d/plugins
+          key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+      - uses: terraform-linters/setup-tflint@v1
+        name: setup tflint
+      - name: init tflint
+        run: tflint --init --config .tflint.hcl
+      - name: run tflint
+        run: tflint -f compact --config .tflint.hcl
