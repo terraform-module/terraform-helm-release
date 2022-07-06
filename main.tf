@@ -2,6 +2,11 @@ resource "helm_release" "this" {
   count                      = var.app["deploy"] ? 1 : 0
   namespace                  = var.namespace
   repository                 = var.repository
+  repository_key_file        = lookup(var.repository_config, "repository_key_file", null)
+  repository_cert_file       = lookup(var.repository_config, "repository_cert_file", null)
+  repository_ca_file         = lookup(var.repository_config, "repository_ca_file", null)
+  repository_username        = lookup(var.repository_config, "repository_username", null)
+  repository_password        = lookup(var.repository_config, "repository_password", null)
   name                       = var.app["name"]
   version                    = var.app["version"]
   chart                      = var.app["chart"]
