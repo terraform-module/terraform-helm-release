@@ -3,5 +3,6 @@ terraform {
 
   required_providers {
     helm = ">= 2.0"
+    null = ">= 3.0"
   }
 }

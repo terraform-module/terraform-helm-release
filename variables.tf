@@ -42,3 +42,9 @@ variable "repository" {
   description = "Helm repository"
   type        = string
 }
+
+variable "manage_repo" {
+  description = "Whether Helm repo should be added, updated and removed during Terraform execution"
+  default     = false
+  type        = bool
+}
