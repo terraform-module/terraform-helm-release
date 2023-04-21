@@ -28,6 +28,7 @@ resource "helm_release" "this" {
   wait_for_jobs              = lookup(var.app, "wait_for_jobs", false)
   dependency_update          = lookup(var.app, "dependency_update", false)
   replace                    = lookup(var.app, "replace", false)
+  timeout                    = lookup(var.app, "timeout", 300)
   values                     = var.values
 
   dynamic "set" {
