@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: check next version
         uses: anothrNick/github-tag-action@1.67.0
