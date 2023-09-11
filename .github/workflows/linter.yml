@@ -19,7 +19,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
 
       - name: Cache terraform folder
-        uses: actions/cache@v3
+        uses: actions/cache@v3.3.2
         with:
           path: ./.terraform
           key: terraform
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.3.2
         name: Cache tflint plugin dir
         with:
           path: ~/.tflint.d/plugins
