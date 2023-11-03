@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       # https://github.com/hashicorp/setup-terraform
-      - uses: hashicorp/setup-terraform@v2
+      - uses: hashicorp/setup-terraform@v3
 
       - name: Cache terraform folder
         uses: actions/cache@v3
