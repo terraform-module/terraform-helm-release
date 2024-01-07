@@ -43,7 +43,7 @@ jobs:
           DEFAULT_BUMP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.bump || 'patch' }}
 
       - name: release-draft
-        uses: release-drafter/release-drafter@v5.23.0
+        uses: release-drafter/release-drafter@v5.25.0
         if: "!contains(github.event.head_commit.message, 'skip')"
         id: release
         env:
