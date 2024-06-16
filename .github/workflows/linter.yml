@@ -19,7 +19,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v2.0.3
 
       - name: Cache terraform folder
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./.terraform
           key: terraform
@@ -38,13 +38,13 @@ jobs:
     name: "tflint"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.6.0
-      - uses: actions/cache@v3
+      - uses: actions/checkout@v4.1.7
+      - uses: actions/cache@v4
         name: Cache tflint plugin dir
         with:
           path: ~/.tflint.d/plugins
           key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
-      - uses: terraform-linters/setup-tflint@v3.1.1
+      - uses: terraform-linters/setup-tflint@v4.0.0
         name: setup tflint
       - name: init tflint
         run: tflint --init --config .tflint.hcl
