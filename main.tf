@@ -29,6 +29,7 @@ resource "helm_release" "this" {
   dependency_update          = lookup(var.app, "dependency_update", false)
   replace                    = lookup(var.app, "replace", false)
   timeout                    = lookup(var.app, "timeout", 300)
+  upgrade_install            = lookup(var.app, "upgrade_install", false)
   values                     = var.values
 
   dynamic "set" {
