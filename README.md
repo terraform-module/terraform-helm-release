@@ -47,6 +47,7 @@ module jenkins {
 
   app = {
     name          = "jenkins"
+    description   = "some custom description"
     version       = "1.5.0"
     chart         = "jenkins"
     force_update  = true
