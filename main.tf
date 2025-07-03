@@ -34,6 +34,6 @@ resource "helm_release" "this" {
   values                     = var.values
 
   set = [for item in coalesce(var.set, []): { "name": item.name, "value": item.value}]
-  set_sensitive = [for item in coalesce(var.set_sensitive, []): { "name": item.name, "value": item.value}]
+  set_sensitive = [for item in coalesce(var.set_sensitive, []): { "name": item.path, "value": item.value}]
 
 }
